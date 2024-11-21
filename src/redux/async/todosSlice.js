@@ -19,6 +19,14 @@ export const deleteTodo = createAsyncThunk("todos/deleteTodo", async (id) => {
   return id;
 });
 
+export const toggleTodo = createAsyncThunk("todos/toggleTodo", async (id) => {
+  const response = await axios.get(`${API_URL}/${id}`);
+  const todo = response.data;
+  const updatedTodo = { ...todo, completed: !todo.completed };
+  await axios.put(`${API_URL}/${id}`, updatedTodo);
+  return updatedTodo;
+});
+
 export const currentTodo = createAsyncThunk("todos/currentTodo", async (id) => {
   const response = await axios.get(`${API_URL}/${id}`);
   return response.data;
@@ -101,6 +109,18 @@ const todosSlice = createSlice({
         }
       })
       .addCase(updateTodo.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.error.message;
+      })
+      // Toggle Todo
+      .addCase(toggleTodo.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(toggleTodo.fulfilled, (state) => {
+        state.loading = false;
+        state.isSuccess = !state.isSuccess;
+      })
+      .addCase(toggleTodo.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message;
       });

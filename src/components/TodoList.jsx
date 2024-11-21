@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 //   currentTodo,
 // } from "../redux/slices/todosSlice";
 
-import { fetchTodos, deleteTodo, currentTodo } from "../redux/async/todosSlice";
+import { fetchTodos, deleteTodo, currentTodo, toggleTodo } from "../redux/async/todosSlice";
 
 const TodoList = () => {
   const { todos, loading, error, isSuccess } = useSelector(
@@ -23,6 +23,12 @@ const TodoList = () => {
       dispatch(fetchTodos());
     }
   }, [isSuccess]);
+
+  const handleToggle = (id) => {
+    dispatch(toggleTodo(id)).then(() => {
+      dispatch(fetchTodos());
+    });
+  };
 
   if (loading) {
     return <div className="alert alert-info text-center">Loading...</div>;
@@ -47,7 +53,7 @@ const TodoList = () => {
           className={`list-group-item d-flex justify-content-between align-items-center ${
             todo.completed ? "list-group-item-success" : ""
           }`}
-          onClick={() => dispatch(toggleTodo(todo.id))}
+          onClick={() => handleToggle(todo.id)}
         >
           <span
             style={{
