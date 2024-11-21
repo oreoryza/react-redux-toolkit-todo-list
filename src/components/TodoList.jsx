@@ -12,6 +12,7 @@ const TodoList = () => {
   const { todos, loading, error, isSuccess } = useSelector(
     (state) => state.todos
   );
+  const lang = useSelector((state) => state.lang.lang);
   const dispatch = useDispatch();
   
   useEffect(() => {
@@ -71,14 +72,14 @@ const TodoList = () => {
               className="btn btn-danger btn-sm"
               disabled={loading}
             >
-              Delete
+              {lang === "en" ? "Delete" : "Hapus"}
             </button>
             <button
               onClick={(e) => dispatch(currentTodo(todo.id), e.stopPropagation())}
               className="btn btn-warning btn-sm"
               disabled={loading}
             >
-              Edit
+              {lang === "en" ? "Edit" : "Ubah"}
             </button>
           </div>
         </li>

@@ -9,6 +9,7 @@ const TodoInput = () => {
   const dispatch = useDispatch();
   const [text, setText] = useState("");
   const {isUpdate, todo, loading} = useSelector((state) => state.todos);
+  const lang = useSelector((state) => state.lang.lang);
 
   useEffect(() => {
     if (isUpdate) {
@@ -35,12 +36,12 @@ const TodoInput = () => {
         <input
           type="text"
           className="form-control"
-          placeholder="Add a new task..."
+          placeholder={lang == "en" ? "Add a new todo.." : "Tambahkan to-do baru.."}
           value={text}
           onChange={(e) => setText(e.target.value)}
           required
         />
-        <button type="submit" disabled={loading} className={`btn ${isUpdate ? "btn-warning" : "btn-primary"}`}>{isUpdate ? "Update" : "Add"}</button>
+        <button type="submit" disabled={loading} className={`btn ${isUpdate ? "btn-warning" : "btn-primary"}`}>{isUpdate ? `${lang == "en" ? "Update" : "Perbarui"}` : `${lang == "en" ? "Add" : "Tambah"}`}</button>
       </form>
     </div>
   );
