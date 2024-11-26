@@ -1,0 +1,8 @@
+[{
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.vercel.oreoryza_todo_list.twa",
+      "sha256_cert_fingerprints": ["FA:F0:37:DE:59:FC:36:78:66:8A:50:34:24:31:89:75:2D:29:44:B9:72:E5:8A:B4:C5:D8:EA:D7:13:68:1E:96"]
+    }
+  }]
