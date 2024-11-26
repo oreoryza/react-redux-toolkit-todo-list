@@ -38,10 +38,11 @@ const TodoInput = () => {
           className="form-control"
           placeholder={lang == "en" ? "Add a new todo.." : "Tambahkan to-do baru.."}
           value={text}
+          cy-data="input-todo"
           onChange={(e) => setText(e.target.value)}
           required
         />
-        <button type="submit" disabled={loading} className={`btn ${isUpdate ? "btn-warning" : "btn-primary"}`}>{isUpdate ? `${lang == "en" ? "Update" : "Perbarui"}` : `${lang == "en" ? "Add" : "Tambah"}`}</button>
+        <button cy-data="input-button" type="submit" disabled={loading} className={`btn ${isUpdate ? "btn-warning" : "btn-primary"}`}>{isUpdate ? `${lang == "en" ? "Update" : "Perbarui"}` : `${lang == "en" ? "Add" : "Tambah"}`}</button>
       </form>
     </div>
   );

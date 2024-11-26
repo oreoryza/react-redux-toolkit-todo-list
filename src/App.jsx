@@ -23,7 +23,7 @@ const App = () => {
                 <button onClick={() => dispatch(langToggle())} className={`btn ${theme === "light" ? "btn-outline-primary" : "btn-outline-light"} p-2`}>{lang === "en" ? "EN" : "ID"}</button>
                 <button onClick={() => dispatch(toggleTheme())} className={`btn ${theme === "light" ? "btn-outline-primary" : "btn-outline-light"} p-2`}>{theme === "light" ? <i className="bi bi-sun"></i> : <i className="bi bi-moon"></i>}</button>
               </div>
-              <h1 className="card-title text-center mb-4">{lang === "en" ? "To-Do List" : "Daftar To-Do"}</h1>
+              <h1 cy-data="title-todo" className="card-title text-center mb-4">{lang === "en" ? "To-Do List" : "Daftar To-Do"}</h1>
               <TodoInput />
               <TodoList />
             </div>

@@ -23,8 +23,11 @@ const todosSlice = createSlice({
       }
     },
     currentTodo: (state, action) => {
-      state.todo = action.payload;
-      state.isUpdate = true;
+      const todo = state.todos.find((todo) => todo.id === action.payload);
+    if (todo) {
+    state.todo = todo;
+    state.isUpdate = true;
+  }
     },
     updateTodo: (state, action) => {
       state.isUpdate = false;

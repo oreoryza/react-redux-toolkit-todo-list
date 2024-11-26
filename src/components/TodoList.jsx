@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   deleteTodo,
@@ -46,6 +46,9 @@ const TodoList = () => {
     );
   }
 
+  const handleEdit = (id) => {
+    dispatch(currentTodo(id));
+  };
 
   return (
     <ul className="list-group">
@@ -70,13 +73,15 @@ const TodoList = () => {
               onClick={(e) =>
                 dispatch(deleteTodo(todo.id), e.stopPropagation())
               }
+              cy-data="btn-delete"
               className="btn btn-danger btn-sm"
               disabled={loading}
             >
               {lang === "en" ? "Delete" : "Hapus"}
             </button>
             <button
-              onClick={(e) => dispatch(currentTodo(todo.id), e.stopPropagation())}
+              onClick={(e) => {handleEdit(todo.id), e.stopPropagation()}}
+              cy-data="btn-edit"
               className="btn btn-warning btn-sm"
               disabled={loading}
             >
