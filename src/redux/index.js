@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import todoReducer from "./async/todosSlice";
+import todoReducer from "./slices/todosSlice";
 import langReducer from "./slices/langSlice";
 import themeReducer from "./slices/themeSlice";
 import {persistReducer, persistStore} from "redux-persist";

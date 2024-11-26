@@ -1,8 +1,8 @@
 // src/components/TodoInput.js
 import React, {useEffect, useState} from "react";
 import  { useDispatch, useSelector } from "react-redux";
-// import { addTodo, updateTodo } from "../redux/slices/todosSlice";
-import { addTodo, updateTodo } from "../redux/async/todosSlice";
+import { addTodo, updateTodo } from "../redux/slices/todosSlice";
+// import { addTodo, updateTodo } from "../redux/async/todosSlice";
 import {v4 as uuidv4} from "uuid";
 
 const TodoInput = () => {

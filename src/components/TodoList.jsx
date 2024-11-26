@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-// import {
-//   deleteTodo,
-//   toggleTodo,
-//   currentTodo,
-// } from "../redux/slices/todosSlice";
+import {
+  deleteTodo,
+  toggleTodo,
+  currentTodo,
+} from "../redux/slices/todosSlice";
 
-import { fetchTodos, deleteTodo, currentTodo, toggleTodo } from "../redux/async/todosSlice";
+// import { fetchTodos, deleteTodo, currentTodo, toggleTodo } from "../redux/async/todosSlice";
 
 const TodoList = () => {
   const { todos, loading, error, isSuccess } = useSelector(
@@ -15,20 +15,21 @@ const TodoList = () => {
   const lang = useSelector((state) => state.lang.lang);
   const dispatch = useDispatch();
   
-  useEffect(() => {
-    dispatch(fetchTodos());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchTodos());
+  // }, [dispatch]);
 
-  useEffect(() => {
-    if (isSuccess) {
-      dispatch(fetchTodos());
-    }
-  }, [isSuccess]);
+  // useEffect(() => {
+  //   if (isSuccess) {
+  //     dispatch(fetchTodos());
+  //   }
+  // }, [isSuccess]);
 
   const handleToggle = (id) => {
-    dispatch(toggleTodo(id)).then(() => {
-      dispatch(fetchTodos());
-    });
+    dispatch(toggleTodo(id))
+    // .then(() => {
+    //   dispatch(fetchTodos());
+    // });
   };
 
   if (loading) {
